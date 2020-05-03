@@ -46,16 +46,6 @@ test_optcode_list=(1
  #tested and successfull
 )
 
-for i in "${!test_optcode_list[@]}";
-	do if [ $i -lt 4 ]
-		then echo "${test_optcode_list[$i]}";
-	fi
-done
-
-
-
-#The previous was succesfull and now there rests a new test. Start with a new list and check if the first index is 0
-# then stop the loop
 #test_optcode_list=(1
 #9
 #10
@@ -64,7 +54,47 @@ done
 #3
 #11
 #0
+#14
+#6
+#6
+#2
+#3
+#1
+#8
 #99)
+
+for i in "${!test_optcode_list[@]}";
+	do if [ "$i" -lt 4 ]
+		then echo "${test_optcode_list[$i]}";
+
+    index_in_list="1" # if else statement for if 1 then + if 2 then *
+
+    value_1="${test_optcode_list[index_in_list]}"
+
+    #echo "$value_1"
+
+    value_2="${test_optcode_list[index_in_list+1]}"
+
+    #echo "$value_2"
+
+    #Use value as index position
+    #Read the value of the index position
+    position_1="${test_optcode_list[value_1]}"
+    position_2="${test_optcode_list[value_2]}"
+
+    #add position [1] and position [2]
+    sum_1_2=$(($position_1+$position_2))
+
+    #read value [3]
+    value_3="${test_optcode_list[3]}"
+
+    #use value 3 as index to be changed to sum_1_2
+    test_optcode_list[value_3]=$((sum_1_2))
+	fi
+done
+
+#The previous was succesfull and now there rests a new test. Start with a new list and check if the first index is 0
+# then stop the loop
 
 #create a variable that will increase after the process has been done. 
 	#the first process of sum is done once
@@ -74,46 +104,46 @@ done
 #Make a check that the program actually has to stop if the next sequence starts with 99.
 
 #read [1] and [2]
-
-index_in_list="0"
-
-value_1="${test_optcode_list[index_in_list]}"
-
-#echo "$value_1"
-
-value_2="${test_optcode_list[index_in_list+1]}"
-
-#echo "$value_2"
-
-#Use value as index position
-#Read the value of the index position
-position_1="${test_optcode_list[value_1]}"
-position_2="${test_optcode_list[value_2]}"
-
-#add position [1] and position [2]
-sum_1_2=$(($position_1+$position_2))
+#
+#index_in_list="0"
+#
+#value_1="${test_optcode_list[index_in_list]}"
+#
+##echo "$value_1"
+#
+#value_2="${test_optcode_list[index_in_list+1]}"
+#
+##echo "$value_2"
+#
+##Use value as index position
+##Read the value of the index position
+#position_1="${test_optcode_list[value_1]}"
+#position_2="${test_optcode_list[value_2]}"
+#
+##add position [1] and position [2]
+#sum_1_2=$(($position_1 + $position_2))
 echo "debug plusses"
 
-# read value [3]
-value_3="${test_optcode_list[3]}"
-
-#use value 3 as index to be changed to sum_1_2
-test_optcode_list[value_3]=$sum_1_2
+## read value [3]
+#value_3="${test_optcode_list[3]}"
+#
+##use value 3 as index to be changed to sum_1_2
+#test_optcode_list[value_3]=$((sum_1_2))
 
 #Create the loop here. First try out the loop till the end of the list
 	#Then set if statement to stop when the value_1 is 99
 #product of next set
-value_1="${test_optcode_list[5]}"
-value_2="${test_optcode_list[6]}"
-
-position_1="${test_optcode_list[value_1]}"
-position_2="${test_optcode_list[value_2]}"
-
-value_3="${test_optcode_list[7]}"
-product_1_2=$(($position_1*$position_2))
-echo "debug product" 
-
-test_optcode_list[value_3]=$product_1_2
+#value_1="${test_optcode_list[5]}"
+#value_2="${test_optcode_list[6]}"
+#
+#position_1="${test_optcode_list[value_1]}"
+#position_2="${test_optcode_list[value_2]}"
+#
+#value_3="${test_optcode_list[7]}"
+#product_1_2=$(($position_1*$position_2))
+#echo "debug product"
+#
+#test_optcode_list[value_3]=$product_1_2
 
 
 #echo ""
